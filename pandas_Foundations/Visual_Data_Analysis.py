@@ -10,8 +10,8 @@ y_columns = list(['AAPL','IBM'])
 df.plot(x='Month', y=y_columns)
 
 # Add the title
-#Using plot() without x and y will set the name/title for the graph
-plt.plot('Monthly stock prices')
+
+plt.title('Monthly stock prices')
 
 # Add the y-axis label
 plt.ylabel('Price ($US)')
