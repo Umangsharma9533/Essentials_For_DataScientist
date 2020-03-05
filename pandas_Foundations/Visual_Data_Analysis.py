@@ -45,10 +45,22 @@ plt.show()
 # two columns cannot be plotted together because their units do not match.
 # The .plot() method can generate subplots for each column being plotted. Here, each plot will be scaled independently
 # Make a list of the column names to be plotted: cols
+#The kind of plot to produce:
+#‘line’ : line plot (default)
+#‘bar’ : vertical bar plot
+#‘barh’ : horizontal bar plot
+#‘hist’ : histogram
+#‘box’ : boxplot
+#‘kde’ : Kernel Density Estimation plot
+#‘density’ : same as ‘kde’
+#‘area’ : area plot
+#‘pie’ : pie plot
+#‘scatter’ : scatter plot
+#‘hexbin’ : hexbin plot.
 cols = list(['weight','mpg'])
 
 # Generate the box plots
-df[cols].plot(subplots=True)
+df[cols].plot(kind='box',subplots=True)
 
 # Display the plot
 plt.show()
