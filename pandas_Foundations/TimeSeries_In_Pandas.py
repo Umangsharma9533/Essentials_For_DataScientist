@@ -38,6 +38,9 @@ ts3 = ts0.loc['2010-12-15':'2010-12-31']
 ts3 = ts2.reindex(ts1.index)
 
 # Reindex with fill method, using forward fill: ts4
+
+#ffill: will fill the NaN vlaue with values at forward indexes
+#bfill: will fill the NaN vlaue with values at backward indexes
 ts4 = ts2.reindex(ts1.index,method="ffill")
 
 # Combine ts1 + ts2: sum12
@@ -48,3 +51,26 @@ sum13 = ts1+ts3
 
 # Combine ts1 + ts4: sum14
 sum14 = ts1+ts4
+
+
+#==============================================================================
+# Downsample to 6 hour data and aggregate by mean: df1
+df1 = df['Temperature'].resample('6h').mean()
+
+# Downsample to daily data and count the number of data points: df2
+df2 = df['Temperature'].resample('D').count()
+
+#==============================================================================
+#Separating and resampling
+
+# Extract temperature data for August: august
+august = df['Temperature'].loc['2010-08']
+
+# Downsample to obtain only the daily highest temperatures in August: august_highs
+august_highs = august.resample('24h').max()
+
+# Extract temperature data for February: february
+february = df['Temperature'].loc['2010-02']
+
+# Downsample to obtain the daily lowest temperatures in February: february_lows
+february_lows = february.resample('24h').min()
