@@ -106,3 +106,59 @@ overcast_daily_max_mean = overcast_daily_max.mean()
 
 # Print the difference (sunny minus overcast)
 print(sunny_daily_max_mean-overcast_daily_max_mean)
+
+#===========================================================================
+# Import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+# Select the visibility and dry_bulb_faren columns and resample them: weekly_mean
+weekly_mean = df_clean[['visibility','dry_bulb_faren']].resample('W').mean()
+
+# Print the output of weekly_mean.corr()
+print(weekly_mean.corr())
+
+# Plot weekly_mean with subplots=True
+weekly_mean.plot(subplots=True)
+plt.show()
+
+
+#====================================================================================
+# From previous steps
+is_sky_clear = df_clean['sky_condition'] == 'CLR'
+resampled = is_sky_clear.resample('D')
+sunny_hours = resampled.sum()
+total_hours = resampled.count()
+sunny_fraction = sunny_hours / total_hours
+
+# Make a box plot of sunny_fraction
+sunny_fraction.plot(kind='box')
+plt.show()
+
+
+#==========================================================
+# Resample dew_point_faren and dry_bulb_faren by Month, aggregating the maximum values: monthly_max
+df_clean = df_clean.resample('M').max()
+monthly_max=df_clean[['dew_point_faren','dry_bulb_faren']]
+
+# Generate a histogram with bins=8, alpha=0.5, subplots=True
+monthly_max.plot(kind='hist',bins=8,alpha=0.5,subplots=True)
+
+# Show the plot
+plt.show()
+#=============================================================
+# Extract the maximum temperature in August 2010 from df_climate: august_max
+august_max = df_climate.loc['2010-08', 'Temperature'].max()
+print(august_max)
+
+# Resample August 2011 temps in df_clean by day & aggregate the max value: august_2011
+august_2011 = df_clean.loc['2011-Aug','dry_bulb_faren']
+august_2011=august_2011.resample('D').max()
+print(august_2011)
+# Filter for days in august_2011 where the value exceeds august_max: august_2011_high
+august_2011_high = august_2011[august_2011>august_max]
+print(august_2011_high)
+# Construct a CDF of august_2011_high
+august_2011_high.plot(kind='hist',cumulative=True,normed=True,bins=25)
+
+# Display the plot
+plt.show()
