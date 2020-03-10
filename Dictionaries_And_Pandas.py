@@ -97,3 +97,40 @@ row_labels = ['US', 'AUS', 'JPN', 'IN', 'RU', 'MOR', 'EG']
 cars.index=row_labels
 # Print cars again
 print(cars)
+
+
+#===============================================================================
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out first 3 observations
+print(cars[0:3])
+
+# Print out fourth, fifth and sixth observation
+print(cars[3:6])
+print(cars)
+#==============================================================================
+#Use of loc[] and iloc[]
+#loc[] : its label based
+#iloc[]: its index based
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+print(cars)
+# Print out observation for Japan
+print(cars.loc["JPN"])
+
+# Print out observations for Australia and Egypt
+print(cars.loc[['AUS','EG']])
+
+# Print out drives_right value of Morocco
+print(cars.loc['MOR','drives_right'])
+
+# Print sub-DataFrame
+print(cars.loc[['RU','MOR'],['country','drives_right']])
+print(cars['drives_right'])
+# Print out drives_right column as DataFrame
+print(cars[['drives_right']])
+
+# Print out cars_per_cap and drives_right as DataFrame
+print(cars.loc[:,['cars_per_cap','drives_right']])
