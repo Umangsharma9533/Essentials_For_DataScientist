@@ -64,3 +64,38 @@ for x in np_height:
 # For loop over np_baseball
 for x in np.nditer(np_baseball):
     print(str(x))
+#================================================================================
+#For loop for pandas dataframe
+#this will create a label and all the data of the row will be in the second(row variable) as in this example
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Adapt for loop
+for lab, row in cars.iterrows() :
+    print(lab)
+#=====================================================================================
+
+# Adapt for loop
+for lab, row in cars.iterrows() :
+    print(lab+": "+str(row['cars_per_cap']))
+    
+#====================================================================================
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Code for loop that adds COUNTRY column
+for lab,x in cars.iterrows():
+    cars.loc[lab,"COUNTRY"]=x['country'].upper()
+
+# Print cars
+print(cars)
+
+
+#========================================================================================
+#Use apply method to do above task without for loop
+# Use .apply(str.upper)
+cars["COUNTRY"] = cars["country"].apply(str.upper)
+print(cars)
+    print(row)
