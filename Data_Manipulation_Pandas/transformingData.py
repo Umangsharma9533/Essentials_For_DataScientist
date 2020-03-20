@@ -144,3 +144,12 @@ print(mean_med_sales_by_type)
 mean_sales_by_type_holiday = sales.pivot_table(values='weekly_sales',index='type',columns='is_holiday')
 # Print mean_sales_by_type_holiday
 print(mean_sales_by_type_holiday)
+
+
+#==============================================================================
+# Print mean weekly_sales by department and type; fill missing values with 0
+#when we have to use 2 columns at once
+print(sales.pivot_table(values='weekly_sales',index='type',columns='department',fill_value=0))
+#==============================================================================
+# Print the mean weekly_sales by department and type; fill missing values with 0s; sum all rows and cols
+print(sales.pivot_table(values="weekly_sales", index="department", columns="type", fill_value=0,margins=True))
