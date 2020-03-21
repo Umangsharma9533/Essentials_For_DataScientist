@@ -83,3 +83,37 @@ print(temperatures_ind.loc["2010":"2011"])
 
 # Use .loc[] to subset temperatures_ind for rows from Aug 2010 to Feb 2011
 print(temperatures_ind.loc["Aug 2010":"Feb 2011"])
+#=======================================================================================
+#You can only slice an index if the index is sorted (using .sort_index()).
+#To slice at the outer level, first and last can be strings.
+#To slice at inner levels, first and last should be tuples.
+#If you pass a single slice to .loc[], it will slice the rows.
+# Add a year column to temperatures
+temperatures['year']=temperatures['date'].dt.year
+
+# Pivot avg_temp_c by country and city vs year
+temp_by_country_city_vs_year = temperatures.pivot_table("avg_temp_c",index=['country','city'],columns='year')
+
+# See the result
+print(temp_by_country_city_vs_year)
+
+#=================================================================================
+# Subset for Egypt to India
+temp_by_country_city_vs_year.loc["Egypt":"India"]
+
+# Subset for Egypt, Cairo to India, Delhi
+temp_by_country_city_vs_year.loc[("Egypt","Cairo"):("India","Delhi")]
+
+# Subset in both directions at once
+temp_by_country_city_vs_year.loc[("Egypt","Cairo"):("India","Delhi"),"2005":"2010"]
+#=========================================================================================
+# Get the worldwide mean temp by year
+mean_temp_by_year = temp_by_country_city_vs_year.mean(axis="index")
+# Filter for the year that had the highest mean temp
+print(mean_temp_by_year[mean_temp_by_year>=mean_temp_by_year.max()])
+
+# Get the mean temp by city
+mean_temp_by_city = temp_by_country_city_vs_year.mean(axis="columns")
+
+# Filter for the city that had the lowest mean temp
+print(mean_temp_by_city[mean_temp_by_city<=mean_temp_by_city.min()])
