@@ -70,3 +70,16 @@ print(temperatures_srt.loc[:,"date":"avg_temp_c"])
 
 # Subset in both directions at once
 print(temperatures_srt.loc[("India", "Hyderabad"): ("Iraq", "Baghdad"),"date":"avg_temp_c"])
+
+#===============================================================================================
+# Use Boolean conditions to subset temperatures for rows in 2010 and 2011
+print(temperatures[(temperatures["date"]>="2010") & (temperatures["date"]<"2012")])
+
+# Set date as an index
+temperatures_ind = temperatures.set_index('date')
+
+# Use .loc[] to subset temperatures_ind for rows in 2010 and 2011
+print(temperatures_ind.loc["2010":"2011"])
+
+# Use .loc[] to subset temperatures_ind for rows from Aug 2010 to Feb 2011
+print(temperatures_ind.loc["Aug 2010":"Feb 2011"])
