@@ -25,3 +25,14 @@ print(temperatures[temperatures["city"].isin(cities)])
 # Subset temperatures_ind using .loc[]
 
 print(temperatures_ind.loc[cities])
+
+#==============================================================================
+#Multi Level Inedexing
+# Index temperatures by country & city
+temperatures_ind = temperatures.set_index(["country","city"])
+
+# List of tuples: Brazil, Rio De Janeiro & Pakistan, Lahore
+rows_to_keep = temperatures_ind.loc[[('Brazil','Rio De Janeiro'),('Pakistan','Lahore')]]
+
+# Subset for rows to keep
+print(rows_to_keep)
