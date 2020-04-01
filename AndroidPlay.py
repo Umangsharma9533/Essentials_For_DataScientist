@@ -31,3 +31,15 @@ for col in cols_to_clean:
         apps[col] = apps[col].str.replace(char, '')
     # Convert col to numeric
     apps[col] = pd.to_numeric(apps[col])
+'''
+3. Exploring app categories
+
+With more than 1 billion active users in 190 countries around the world, Google Play continues to be an important distribution platform to build a global audience. For businesses to get their apps in front of users, it's important to make them more quickly and easily discoverable on Google Play. To improve the overall search experience, Google has introduced the concept of grouping apps into categories.
+
+This brings us to the following questions:
+
+    Which category has the highest share of (active) apps in the market?
+    Is any specific category dominating the market?
+    Which categories have the fewest number of apps?
+
+We will see that there are 33 unique app categories present in our dataset. Family and Game apps have the highest market prevalence. Interestingly, Tools, Business and Medical apps are also at the top.'''
