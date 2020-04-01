@@ -39,3 +39,50 @@ print(quarter1.loc['feb 26, 2015':'mar 7, 2015'])
 
 # Compute & print total sales in quarter1
 print(quarter1.sum())
+
+'''
+Concatenating pandas Series along row axis
+'''
+# Initialize empty list: units
+units = []
+
+# Build the list of Series
+for month in [jan, feb, mar]:
+    units.append(month['Units'])
+
+# Concatenate the list: quarter1
+quarter1 = pd.concat(units,axis='rows')
+
+# Print slices from quarter1
+print(quarter1.loc['jan 27, 2015':'feb 2, 2015'])
+print(quarter1.loc['feb 26, 2015':'mar 7, 2015'])
+
+'''
+Appending Data Frame with ignore Index
+'''
+# Add 'year' column to names_1881 and names_1981
+names_1881['year'] = 1881
+names_1981['year'] = 1981
+
+# Append names_1981 after names_1881 with ignore_index=True: combined_names
+combined_names = names_1881.append(names_1981,ignore_index=True)
+
+# Print shapes of names_1981, names_1881, and combined_names
+print(names_1981.shape)
+print(names_1881.shape)
+print(combined_names.shape)
+
+# Print all rows that contain the name 'Morgan'
+print(combined_names.loc[combined_names['name']=='Morgan'])
+
+'''
+Concatenating pandas DataFrames along column axis
+'''
+# Create a list of weather_max and weather_mean
+weather_list = [weather_max,weather_mean]
+
+# Concatenate weather_list horizontally
+weather = pd.concat(weather_list,axis=1)
+
+# Print weather
+print(weather)
