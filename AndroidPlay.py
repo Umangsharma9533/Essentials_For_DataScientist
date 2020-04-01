@@ -180,3 +180,43 @@ fig.set_size_inches(15, 8)
 ax = sns.stripplot(x='Price', y='Category', data=apps_under_100,
                    jitter=True, linewidth=1)
 ax.set_title('App pricing trend across categories after filtering for junk apps')
+
+'''
+8. Popularity of paid apps vs free apps
+
+For apps in the Play Store today, there are five types of pricing strategies:
+free, freemium, paid, paymium, and subscription. Let's focus on free and paid apps only.
+Some characteristics of free apps are:
+Free to download.
+Main source of income often comes from advertisements.
+Often created by companies that have other products and the app serves as an extension of those products.
+Can serve as a tool for customer retention, communication, and customer service.
+Some characteristics of paid apps are:
+Users are asked to pay once for the app to download and use it.
+The user can't really get a feel for the app before buying it.
+Are paid apps installed as much as free apps? It turns out that paid apps have a relatively lower number of installs
+than free apps, though the difference is not as stark as I would have expected!
+'''
+trace0 = go.Box(
+    # Data for paid apps
+    y=apps[apps['Type'] == 'Paid']['Installs'],
+    name = 'Paid'
+)
+
+trace1 = go.Box(
+    # Data for free apps
+    y=apps[apps['Type'] == 'Free']['Installs'],
+    name = 'Free'
+)
+
+layout = go.Layout(
+    title = "Number of downloads of paid apps vs. free apps",
+    yaxis = dict(
+        type = 'log',
+        autorange = True
+    )
+)
+
+# Add trace0 and trace1 to a list for plotting
+data = [trace0,trace1]
+plotly.offline.iplot({'data': data, 'layout': layout})
