@@ -61,3 +61,56 @@ ax.set_ylabel("# of observations")
 # Add the legend and show the Figure
 ax.legend()
 plt.show()
+
+
+#=======================================================================
+fig, ax = plt.subplots()
+
+# Add a bar for the rowing "Height" column mean/std
+ax.bar("Rowing", mens_rowing['Height'].mean(), yerr=mens_rowing['Height'].std())
+
+# Add a bar for the gymnastics "Height" column mean/std
+#That's great! These error bars can help you see that the difference
+#in heights is rather large in terms of the standard deviation within every group.
+ax.bar("Gymnastics", mens_gymnastics['Height'].mean(), yerr=mens_gymnastics['Height'].std())
+
+# Label the y-axis
+ax.set_ylabel("Height (cm)")
+
+plt.show()
+#=====================================================================
+fig, ax = plt.subplots()
+
+# Add Seattle temperature data in each month with error bars
+ax.errorbar(seattle_weather["MONTH"],seattle_weather["MLY-TAVG-NORMAL"],yerr=seattle_weather["MLY-TAVG-STDDEV"])
+ax.errorbar(austin_weather["MONTH"],austin_weather["MLY-TAVG-NORMAL"], yerr=austin_weather["MLY-TAVG-STDDEV"])
+ax.set_ylabel("Temperature (Fahrenheit)")
+
+plt.show()
+
+#=======================================================================
+fig, ax = plt.subplots()
+
+# Add a boxplot for the "Height" column in the DataFrames
+ax.boxplot([mens_rowing["Height"],mens_gymnastics["Height"]])
+
+# Add x-axis tick labels:
+ax.set_xticklabels(["Rowing","Gymnastics"])
+
+# Add a y-axis label
+ax.set_ylabel("Height (cm)")
+
+plt.show()
+#======================================================================
+fig, ax = plt.subplots()
+
+# Add data: "co2", "relative_temp" as x-y, index as color
+ax.scatter(climate_change['co2'],climate_change['relative_temp'],c=climate_change.index)
+
+# Set the x-axis label to "CO2 (ppm)"
+ax.set_xlabel("CO2 (ppm)")
+
+# Set the y-axis label to "Relative temperature (C)"
+ax.set_ylabel("Relative temperature (C)")
+
+plt.show()
