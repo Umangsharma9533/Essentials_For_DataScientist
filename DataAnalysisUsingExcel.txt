@@ -40,6 +40,12 @@ Functions:
      table_array : where you want to look for it
      col_num : the column number in the range containing the value to return
      range_lookup : return an approximate(TRUE(looks for approx match)) or exact match(FALSE(look for eact match))
+  Data Analysis Function:
+  v) COUNT(cell range) : It only counts numeric value.
+  w) COUNTA(cell range) : Count non blank cell irrespective of any data type.\
+  x) COUNTBLANK(cell range) : Count empty cells. Cells with zero values are not counted.
+  Arthimetic Functions:
+  y) SUM(), MAX(),MIN(),AVG(),MEDIAN()
 
 DataTypes in Excel:
   a) Text : String , number or dates represent in text format(we cannot apply maths function to these data types)
@@ -52,4 +58,14 @@ DataTypes in Excel:
   b) Center : its logical
   c) RIght : its numeric or date
   
-  
+LOGIC FUNCTIONS:
+a) IF(logical_test(criteria to test),value_if_true,value_if_false)
+b) AND(logic1,...logicN)
+c) OR (logic1,...logicN)
+
+Conditional Aggregations
+a) COUNTIF(range , criteria) : COUNTIF(AE2:AE153,"=live games")
+b) SUMIF(range,criteria,range_onwhich_we_calculate)
+c) AVERAGEIFS(average_range,criteria_range1,criteria1,criteria_range2,criteria2)
+  Example :
+  AVERAGEIFS(S2:S153,AE2:AE153,AH17,AH2:AH153,AM17)
