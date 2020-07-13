@@ -17,7 +17,29 @@ Functions:
   g) VALUE(text) : Convert numeric text to numeric
      Example : VALUE(A2)
   h) ROUND() : Round the numeric value , can be used as a nested function with value
-             
+  i) CONCATENATE (FirstCell , "Text to add", SecondCell)
+     Example : CONCATENATE(A2," --> " , B2)
+  j) LOWER(Text) : Convert Text to lower case
+  k) UPPER(Text) : Convert text to upper case
+  l) PROPER(Text) : Convert first letter of text to Upper case
+  
+  STRING Functions:
+  m) LEFT(text , number of characters) : selcet the number of character starting from left direction.
+  n) RIGHT(text , number of characters) : selcet the number of character starting from right direction.
+  o) SUBSTITUTE(Cell,"text to replace","text to be entered", number of times ) : Replace the text with a given text for number of times.
+  p) LEN(text) : Give the length of text.  
+  
+  DATE Functions:
+  q) NOW() : Returns the difference between given date and the present date in precision upto hours.
+  r) TODAY() : Returns the difference between given date and the present date in precision upto days. 
+  s) MONTH(date cell) : outcome is the number , which gives the month in the given date.
+  t) WEEKDAY(date cell, return type(from which day you want to start the week)) : outcome is the number , which gives the day in the given date.
+  
+  u) VLOOKUP(lookup_value,table_array,col_num,[range_lookup]) : Search for the given value in another file lookup table
+     lookup_value: What you want to lookup
+     table_array : where you want to look for it
+     col_num : the column number in the range containing the value to return
+     range_lookup : return an approximate(TRUE(looks for approx match)) or exact match(FALSE(look for eact match))
 
 DataTypes in Excel:
   a) Text : String , number or dates represent in text format(we cannot apply maths function to these data types)
