@@ -12,6 +12,22 @@ Functions:
      Nested in Excel is inner outer approach
      Example:
       SORT(FILTER(I2:I153,I2:I153>10000),1,-1) 
+  f) TEXT(Value, format(minimum string /text required)
+     Example : TEXT(A2,"000000000")
+  g) VALUE(text) : Convert numeric text to numeric
+     Example : VALUE(A2)
+  h) ROUND() : Round the numeric value , can be used as a nested function with value
+             
 
 DataTypes in Excel:
+  a) Text : String , number or dates represent in text format(we cannot apply maths function to these data types)
+  b) Number : Numeric values 
+  c) Date : Used for date and time
+  d) BOOLEAN : True/False
 
+  IF value is aligned :
+  a) left : its text
+  b) Center : its logical
+  c) RIght : its numeric or date
+  
+  
