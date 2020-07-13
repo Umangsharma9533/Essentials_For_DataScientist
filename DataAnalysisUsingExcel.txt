@@ -1,1 +1,17 @@
+Shortcuts in excel:
+  a) CTRL+G : use to naviagte to a particular cell
+  b) CTL +F : Use to find a particulat entry in cell
+  
+Functions:
+  a) SORT(range of cells(A1:A123),order(1(asc) or -1(desc))
+  b) FILTER (Range of cells , Condition)
+     Example FILTER(I2:I153,I2:I153>10000)
+  c) EXACT(key) : Tells the exact value
+  d) TRIM(Range of cells) : Use to align or remove the extra space from range of cells
+  e) Nested Function: SORT(FILTER (Range of cells , Condition),asc/desc for inner, asc/desc for outer)
+     Nested in Excel is inner outer approach
+     Example:
+      SORT(FILTER(I2:I153,I2:I153>10000),1,-1) 
+
+DataTypes in Excel:
 
