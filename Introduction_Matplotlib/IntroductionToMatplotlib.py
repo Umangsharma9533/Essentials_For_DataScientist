@@ -2,6 +2,8 @@
 import matplotlib.pyplot as plt
 
 # Create a Figure and an Axes with plt.subplots
+#fig = container that holds evrything we see on page
+# ax = part of the page that holds the data
 fig, ax = plt.subplots()
 
 # Call the show function to show the result
